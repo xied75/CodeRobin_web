@@ -119,11 +119,19 @@ if [ -e "$DEPLOYMENT_SOURCE/bower.json" ]; then
   exitWithMessageOnError "bower failed"
 fi
 
+# 4.1 Install bower packages for test
+if [ -e "$DEPLOYMENT_SOURCE/test/bower.json" ]; then
+  cd test
+  ../node_modules/.bin/bower install
+  exitWithMessageOnError "bower for test failed"
+  cd ..
+fi
+
 # 5. Run grunt
 if [ -e "$DEPLOYMENT_SOURCE/Gruntfile.js" ]; then
   eval $NPM_CMD install grunt-cli
   exitWithMessageOnError "installing grunt failed"
-  ./node_modules/.bin/grunt --no-color
+  ./node_modules/.bin/grunt --no-color clean:
   exitWithMessageOnError "grunt failed"
 fi
 
