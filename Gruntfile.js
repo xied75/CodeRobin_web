@@ -86,7 +86,7 @@ module.exports = function (grunt) {
             test: {
                 options: {
                     open: false,
-                    port: 9001,
+                    port: process.env.PORT,
                     middleware: function(connect) {
                         return [
                             connect.static('.tmp'),
