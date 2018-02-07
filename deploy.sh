@@ -98,6 +98,10 @@ selectNodeVersion () {
 # Deployment
 # ----------
 
+# temp
+eval $NPM_CMD cache clean
+
+
 echo Handling node.js deployment.
 
 # 2. Select node version
